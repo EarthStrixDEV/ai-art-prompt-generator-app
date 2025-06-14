@@ -29,7 +29,6 @@ const colorTonePresets = [
 ];
 
 const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
-console.log("API Key: "+GOOGLE_API_KEY);
 
 // Main Page component
 const HomePage = () => {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ToastProvider from "./ToastProvider";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +29,41 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+          <div className="flex min-h-screen bg-gray-900 text-gray-100 font-sans">
+            {/* Side Navigation */}
+            <nav className="w-64 bg-gray-800 p-4 shadow-lg flex flex-col border-r border-gray-700">
+                <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-blue-400">AI Prompter</h2>
+                </div>
+                <ul className="space-y-4">
+                    <li>
+                        {/* Replaced Link with standard <a> tag for compilation compatibility */}
+                        <Link href="/" className="flex items-center p-3 rounded-md text-gray-200 hover:bg-blue-700 hover:text-white transition duration-200 ease-in-out transform hover:scale-105">
+                            <svg className="h-5 w-5 mr-3 text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                            </svg>
+                            Prompt Generator
+                        </Link>
+                    </li>
+                    <li>
+                        {/* Replaced Link with standard <a> tag for compilation compatibility */}
+                        <a href="/keyword-generator" className="flex items-center p-3 rounded-md text-gray-200 hover:bg-purple-700 hover:text-white transition duration-200 ease-in-out transform hover:scale-105">
+                            <svg className="h-5 w-5 mr-3 text-purple-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M11.49 10.707a1 1 0 010-1.414L15.486 5.5A1 1 0 0117 6v6a1 1 0 01-1.486.828l-3.996-3.996zM4 10a1 1 0 011-1h2a1 1 0 110 2H5a1 1 0 01-1-1zm10 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm-6 2a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1zm-6 2a1 1 0 011-1h2a1 1 0 110 2H5a1 1 0 01-1-1zm10 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clipRule="evenodd"></path>
+                            </svg>
+                            Keyword Prompt Generator
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            {/* Main Content Area */}
+            <main className="flex-1 p-4 sm:p-8 overflow-y-auto">
+              <ToastProvider>
+                {children}
+              </ToastProvider>
+            </main>
+          </div>
       </body>
     </html>
   );
